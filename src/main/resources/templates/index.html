@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Falabella | Gestión de Ventas</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/ecommerce.css">
+</head>
+<body>
+  <header class="header" id="navbar"></header>
+  <main class="main container">
+    <section class="hero">
+      <div>
+        <p class="badge">Omnicanal</p>
+        <h1 class="hero-title">Experiencia de compra moderna para Saga Falabella</h1>
+        <p class="text-muted">Catálogo, checkout, panel de administración, vendedores y soporte en una sola interfaz rápida y segura.</p>
+        <div class="hero-actions">
+          <a class="button" href="/login">Ingresar</a>
+          <a class="button ghost" href="/cliente/catalogo">Ver catálogo</a>
+        </div>
+      </div>
+      <div class="card shadow-sm">
+        <h3>Paneles incluidos</h3>
+        <ul class="timeline">
+          <li>Dashboard administrador con métricas</li>
+          <li>Gestión de pedidos tienda (vendedor)</li>
+          <li>Autogestión de pedidos y reclamos (cliente)</li>
+          <li>Seguimiento de reclamos (soporte)</li>
+        </ul>
+      </div>
+    </section>
+    <section class="section">
+      <h2 class="section-title">Características clave</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Compra ágil</h3>
+          <p class="text-muted">Catálogo responsivo, carrito persistente y checkout con validaciones.</p>
+        </div>
+        <div class="card">
+          <h3>Control total</h3>
+          <p class="text-muted">CRUD de productos, proveedores, inventario y usuarios con roles.</p>
+        </div>
+        <div class="card">
+          <h3>Soporte efectivo</h3>
+          <p class="text-muted">Reclamos centralizados con flujos de atención y estados.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer container">© 2024 Saga Falabella · Gestión de Ventas</footer>
+  <script type="module" src="/js/utils/ui.js"></script>
+  <script type="module">
+    import { renderNavbar } from '/js/utils/ui.js';
+    renderNavbar('/');
+  </script>
+</body>
+</html>

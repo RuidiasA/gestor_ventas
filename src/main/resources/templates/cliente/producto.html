@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle de producto</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/ecommerce.css">
+</head>
+<body>
+  <header class="header" id="navbar"></header>
+  <main class="main container">
+    <div id="producto-detalle" class="grid-2"></div>
+  </main>
+  <script type="module">
+    import { productosApi } from '/js/api/productosApi.js';
+    import { addToCart } from '/js/utils/cart.js';
+    import { renderNavbar, showToast } from '/js/utils/ui.js';
+    renderNavbar('/cliente/producto');
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const container = document.getElementById('producto-detalle');
+    async function load() {
+      if (!id) { container.innerHTML = '<div class="alert">Producto no encontrado</div>'; return; }
+      try {
+        const p = await productosApi.detail(id);
+        container.innerHTML = `
+          <div class="card">
+            <img src="${p.imagen || 'https://via.placeholder.com/600x400?text=Producto'}" alt="${p.nombre}">
+          </div>
+          <div class="card">
+            <p class="text-muted">${p.proveedor?.nombre || 'Proveedor'}</p>
+            <h1>${p.nombre}</h1>
+            <div class="product-price">S/ ${Number(p.precio).toFixed(2)}</div>
+            <p>${p.descripcion || 'Descripción no disponible.'}</p>
+            <div class="text-muted">Stock: ${p.stock}</div>
+            <button class="button" id="add">Agregar al carrito</button>
+          </div>`;
+        document.getElementById('add').onclick = () => {
+          addToCart({ id: p.id, name: p.nombre, price: p.precio, imagen: p.imagen });
+          showToast('Producto agregado');
+        };
+      } catch (err) {
+        container.innerHTML = `<div class="alert">${err.message}</div>`;
+      }
+    }
+    load();
+  </script>
+</body>
+</html>

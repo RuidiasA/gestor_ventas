@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard admin</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/layout.css">
+</head>
+<body>
+  <header class="header" id="navbar"></header>
+  <main class="main container">
+    <div class="page-header">
+      <h1>Dashboard</h1>
+      <span class="badge">Administrador</span>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Ventas del mes</div>
+        <div class="kpi-value" id="kpi-ventas">-</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Reclamos abiertos</div>
+        <div class="kpi-value" id="kpi-reclamos">-</div>
+      </div>
+    </div>
+    <section class="section">
+      <h3>Productos más vendidos</h3>
+      <ul id="top-productos" class="timeline"></ul>
+    </section>
+  </main>
+  <script type="module" src="/js/admin/dashboardAdmin.js"></script>
+</body>
+</html>
