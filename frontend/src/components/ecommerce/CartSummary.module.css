@@ -1,0 +1,20 @@
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total {
+  font-size: 20px;
+  color: var(--color-primary);
+}
+
+.muted {
+  color: var(--color-muted);
+  margin: 0;
+}
