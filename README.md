@@ -1,51 +1,38 @@
-# Sistema de Gestión de Ventas y Experiencia del Cliente – Saga Falabella
+# Frontend Saga Falabella – Gestión de Ventas
 
-Backend profesional construido con **Java 17 + Spring Boot 3** siguiendo arquitectura limpia para cubrir autenticación, catálogo, inventario, pedidos, pagos simulados, reclamos y reportes.
+Frontend profesional sin frameworks (HTML5 + CSS3 + JavaScript ES6) para el backend Spring Boot 3 (/api/v1) de gestión de ventas, pedidos y reclamos.
 
-## Arquitectura
-```
-/src/main/java/com/sagafalabella/gestorventas
-    /domain          -> entidades de negocio, repositorios y contratos de servicios
-    /application     -> DTOs, mappers MapStruct, casos de uso y servicios de aplicación
-    /infrastructure  -> adaptadores JPA, seguridad JWT, configuración y excepciones
-    /web             -> controladores REST y manejador global de errores
-```
-
-## Tecnologías
-- Spring Boot 3, Spring Web, Spring Data JPA, Hibernate
-- Spring Security 6 con JWT y BCrypt
-- MapStruct para mapeo DTO
-- Lombok
-- MySQL 8
-- SpringDoc OpenAPI para documentación
-- Dockerfile y docker-compose con MySQL
-
-## Ejecución local
-```bash
-./mvnw spring-boot:run
-```
-
-## Docker
-```bash
-docker-compose up --build
-```
-La aplicación queda disponible en `http://localhost:8080` y la base de datos en el puerto `3306`.
+## Estructura
+- `public/css`: estilos globales, componentes, formularios, tablas y vistas ecommerce.
+- `public/js`: módulos separados por dominio (auth, cliente, vendedor, admin, soporte) y utilitarios.
+- `views`: páginas HTML divididas por rol con navegación entre paneles.
+- `public/img`: coloca aquí los logos e íconos requeridos.
 
 ## Configuración
-Variables principales en `src/main/resources/application.properties`:
-- `spring.datasource.*` para conexión MySQL
-- `app.security.jwt.*` para secretos y expiración JWT
+1. Ajusta la URL del backend definiendo `window.__API_BASE` en cualquier HTML si tu API no está montada en `/api/v1`.
+2. Sirve la carpeta `views` como estática (por ejemplo con `npm install -g serve` y `serve views` o `python -m http.server 8000` desde el directorio raíz).
+3. Las peticiones incluyen automáticamente el JWT desde `localStorage`.
 
-## Endpoints principales
-- `POST /api/v1/auth/login` y `/api/v1/auth/register`
-- `GET/POST/PUT/DELETE /api/v1/productos` con filtros de catálogo
-- `GET/POST/PUT/DELETE /api/v1/proveedores`
-- Flujo de pedidos: `POST /api/v1/pedidos`, `/pago`, `/preparacion`, `/despacho`, `/entrega`
-- Reclamos: `POST /api/v1/pedidos/{id}/reclamos`
-- Reportes: `GET /api/v1/pedidos/reportes`
+## Roles y navegación
+- **Cliente**: `/views/cliente/home.html` con acceso a catálogo, carrito, checkout, pedidos y reclamos.
+- **Vendedor**: `/views/vendedor/panel.html` y pedidos en tienda con confirmación de retiro (QR simulado por código).
+- **Administrador**: dashboard, CRUD de productos/proveedores, inventario, usuarios y reportes.
+- **Soporte**: listado y detalle de reclamos con actualización de estados.
 
-## Datos de prueba
-`data.sql` carga roles base, un proveedor, producto e inventario inicial.
+## Autenticación
+- Login en `/views/login.html` → POST `/api/v1/auth/login`.
+- Registro en `/views/register.html` → POST `/api/v1/auth/register`.
+- El token + rol se guardan en `localStorage` (`auth`), se adjunta como `Authorization: Bearer` y se controla con `authGuard`.
 
-## Documentación API
-Disponible con Swagger UI en `/swagger-ui.html` y OpenAPI JSON en `/v3/api-docs`.
+## Carrito y checkout
+- Carrito persistente en `localStorage` (`cart_items`).
+- Totales con IGV calculados en frontend.
+- Checkout envía `POST /api/v1/pedidos` con items `{ productoId, cantidad }` y datos de entrega.
+
+## Reclamos y soporte
+- Clientes pueden crear reclamos asociados a un pedido.
+- Soporte gestiona estados (pendiente → revisado → resuelto) y puede ver detalle.
+
+## Indicaciones
+- La carpeta `frontend` anterior fue removida para usar solo HTML/CSS/JS nativo.
+- Personaliza iconos en `public/img` según tu branding.

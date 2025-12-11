@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel vendedor</title>
+  <link rel="stylesheet" href="../../public/css/global.css">
+  <link rel="stylesheet" href="../../public/css/components.css">
+  <link rel="stylesheet" href="../../public/css/layout.css">
+</head>
+<body>
+  <header class="header" id="navbar"></header>
+  <main class="main container">
+    <div class="page-header">
+      <div>
+        <p class="badge">Vendedor</p>
+        <h1>Pedidos en tienda</h1>
+      </div>
+      <a class="button" href="/views/vendedor/pedidos.html">Ver pedidos</a>
+    </div>
+    <div class="card">
+      <p>Accede a los pedidos asignados, marca preparaciones y retiros con QR simulado.</p>
+    </div>
+  </main>
+  <script type="module">
+    import { authGuard } from '../../public/js/utils/auth.js';
+    import { renderNavbar } from '../../public/js/utils/ui.js';
+    authGuard(['vendedor']);
+    renderNavbar('/views/vendedor/panel.html');
+  </script>
+</body>
+</html>
