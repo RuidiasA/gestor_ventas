@@ -37,43 +37,17 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
         http
                 .csrf(csrf -> csrf.disable())
-                .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-
-                        // RUTAS PÚBLICAS DEL FRONTEND
-                        .requestMatchers(
-                                "/", "/index", "/home",
-                                "/login", "/register"
-                        ).permitAll()
-
-                        // RUTAS MVC DINÁMICAS PÚBLICAS (como /cliente/catalogo)
-                        .requestMatchers(
-                                "/cliente/**",
-                                "/vendedor/**",
-                                "/admin/**",
-                                "/soporte/**"
-                        ).permitAll()
-
-                        // RECURSOS ESTÁTICOS
-                        .requestMatchers(
-                                "/css/**", "/js/**", "/img/**", "/public/**"
-                        ).permitAll()
-
-                        // API DE AUTENTICACIÓN SIN JWT
+                        .requestMatchers("/", "/index", "/login", "/register").permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
+                        .requestMatchers("/cliente/**").permitAll()
                         .requestMatchers("/api/v1/auth/**").permitAll()
-
-                        // SWAGGER
-                        .requestMatchers(
-                                "/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html"
-                        ).permitAll()
-
-                        // TODAS LAS DEMÁS RUTAS REQUIEREN JWT
-                        .anyRequest().authenticated()
+                        .requestMatchers("/api/**").authenticated()
+                        .anyRequest().permitAll()
                 )
-                // FILTRO JWT
+                .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
