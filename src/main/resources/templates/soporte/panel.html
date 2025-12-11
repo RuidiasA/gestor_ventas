@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel soporte</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/layout.css">
+</head>
+<body>
+  <header class="header" id="navbar"></header>
+  <main class="main container">
+    <div class="page-header">
+      <div>
+        <p class="badge">Soporte</p>
+        <h1>Gestión de reclamos</h1>
+      </div>
+      <a class="button" href="/soporte/reclamos">Ver reclamos</a>
+    </div>
+    <div class="card">
+      <p>Consulta pedidos y actualiza estados de reclamo para mejorar la experiencia del cliente.</p>
+    </div>
+  </main>
+  <script type="module">
+    import { authGuard } from '/js/utils/auth.js';
+    import { renderNavbar } from '/js/utils/ui.js';
+    authGuard(['soporte']);
+    renderNavbar('/soporte/panel');
+  </script>
+</body>
+</html>
