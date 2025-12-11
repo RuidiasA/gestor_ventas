@@ -4,15 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-/**
- * Controlador MVC exclusivo para servir páginas HTML.
- * <p>
- * - No maneja rutas /api/** (el API REST sigue en {@link AuthController} y otros controladores REST).
- * - Las vistas se encuentran en src/main/resources/templates y los recursos estáticos en src/main/resources/static.
- * - Las páginas públicas (/, /login, /register) están permitidas por Spring Security; el resto exige autenticación JWT.
- * - Para agregar nuevas vistas, cree el HTML bajo templates/ y exponga un nuevo @GetMapping sin usar el prefijo /api/.
- * </p>
- */
 @Controller
 public class PageController {
 
@@ -29,11 +20,6 @@ public class PageController {
     @GetMapping("/register")
     public String register() {
         return "register";
-    }
-
-    @GetMapping({"/home", "/cliente/home"})
-    public String home() {
-        return "cliente/home";
     }
 
     @GetMapping("/cliente/{page}")
