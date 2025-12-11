@@ -3,7 +3,7 @@ import { authGuard } from '../utils/auth.js';
 import { renderNavbar, showLoader } from '../utils/ui.js';
 
 authGuard(['administrador']);
-renderNavbar('/admin/reportes');
+renderNavbar('/admin/reportes.html');
 
 const ventasList = document.getElementById('ventas-fecha');
 const productosList = document.getElementById('productos-top');

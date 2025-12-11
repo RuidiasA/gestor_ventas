@@ -3,7 +3,7 @@ import { authGuard } from '../utils/auth.js';
 import { renderNavbar, openModal, showToast, showLoader } from '../utils/ui.js';
 
 authGuard(['vendedor']);
-renderNavbar('/vendedor/pedidos');
+renderNavbar('/vendedor/pedidos.html');
 
 const listEl = document.getElementById('pedidos-vendedor');
 
@@ -22,7 +22,7 @@ async function loadPedidos() {
           <div class="table-actions">
             <button class="button ghost" data-preparado="${p.id}">Preparado</button>
             <button class="button" data-retirar="${p.id}">Retirado</button>
-            <a class="button secondary" href="/vendedor/pedido-detalle?id=${p.id}">Detalle</a>
+            <a class="button secondary" href="/vendedor/pedido-detalle.html?id=${p.id}">Detalle</a>
           </div>
         </div>
       </article>`).join('');

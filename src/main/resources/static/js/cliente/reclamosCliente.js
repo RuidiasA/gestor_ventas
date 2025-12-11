@@ -3,7 +3,7 @@ import { authGuard } from '../utils/auth.js';
 import { renderNavbar, showToast } from '../utils/ui.js';
 
 authGuard(['cliente']);
-renderNavbar('/cliente/reclamos');
+renderNavbar('/cliente/reclamos.html');
 
 const listEl = document.getElementById('reclamos-list');
 const form = document.getElementById('reclamo-form');

@@ -11,7 +11,7 @@ function withAuth(headers = {}) {
 async function handleResponse(response) {
   if (response.status === 401) {
     localStorage.removeItem('auth');
-    window.location.href = '/login';
+    window.location.href = '/login.html';
     throw new Error('Sesión expirada');
   }
   const contentType = response.headers.get('content-type') || '';

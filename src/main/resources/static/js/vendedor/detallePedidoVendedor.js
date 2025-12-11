@@ -3,7 +3,7 @@ import { authGuard } from '../utils/auth.js';
 import { renderNavbar, showToast } from '../utils/ui.js';
 
 authGuard(['vendedor']);
-renderNavbar('/vendedor/pedido-detalle');
+renderNavbar('/vendedor/pedido-detalle.html');
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');

@@ -4,7 +4,7 @@ import { renderNavbar, showToast } from '../utils/ui.js';
 import { authGuard } from '../utils/auth.js';
 
 authGuard(['cliente']);
-renderNavbar('/cliente/checkout');
+renderNavbar('/cliente/checkout.html');
 
 const form = document.getElementById('checkout-form');
 const resume = document.getElementById('checkout-resumen');
@@ -45,7 +45,7 @@ form?.addEventListener('submit', async (e) => {
     await pedidosApi.create(payload);
     clearCart();
     showToast('Pedido creado con éxito');
-    window.location.href = '/cliente/pedidos';
+    window.location.href = '/cliente/pedidos.html';
   } catch (err) {
     showToast(err.message, 'error');
   }

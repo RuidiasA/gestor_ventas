@@ -3,7 +3,7 @@ import { renderNavbar, showLoader } from '../utils/ui.js';
 import { reportesApi } from '../api/reportesApi.js';
 
 authGuard(['administrador']);
-renderNavbar('/admin/dashboard');
+renderNavbar('/admin/dashboard.html');
 
 const kpiVentas = document.getElementById('kpi-ventas');
 const kpiReclamos = document.getElementById('kpi-reclamos');

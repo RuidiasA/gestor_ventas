@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel vendedor</title>
+  <title>Panel soporte</title>
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/components.css">
   <link rel="stylesheet" href="/css/layout.css">
@@ -13,20 +13,20 @@
   <main class="main container">
     <div class="page-header">
       <div>
-        <p class="badge">Vendedor</p>
-        <h1>Pedidos en tienda</h1>
+        <p class="badge">Soporte</p>
+        <h1>Gestión de reclamos</h1>
       </div>
-      <a class="button" href="/vendedor/pedidos">Ver pedidos</a>
+      <a class="button" href="/soporte/reclamos.html">Ver reclamos</a>
     </div>
     <div class="card">
-      <p>Accede a los pedidos asignados, marca preparaciones y retiros con QR simulado.</p>
+      <p>Consulta pedidos y actualiza estados de reclamo para mejorar la experiencia del cliente.</p>
     </div>
   </main>
   <script type="module">
     import { authGuard } from '/js/utils/auth.js';
     import { renderNavbar } from '/js/utils/ui.js';
-    authGuard(['vendedor']);
-    renderNavbar('/vendedor/panel');
+    authGuard(['soporte']);
+    renderNavbar('/soporte/panel.html');
   </script>
 </body>
 </html>

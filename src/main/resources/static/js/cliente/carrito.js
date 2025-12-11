@@ -1,7 +1,7 @@
 import { getCart, updateQuantity, removeFromCart, totals, clearCart } from '../utils/cart.js';
 import { renderNavbar, showToast } from '../utils/ui.js';
 
-renderNavbar('/cliente/carrito');
+renderNavbar('/cliente/carrito.html');
 
 const cartList = document.getElementById('cart-items');
 const summary = document.getElementById('cart-summary');
@@ -50,7 +50,7 @@ function renderCart() {
       <div class="flex" style="justify-content: space-between;"><span>Subtotal</span><strong>S/ ${subtotal.toFixed(2)}</strong></div>
       <div class="flex" style="justify-content: space-between;"><span>IGV (18%)</span><strong>S/ ${igv.toFixed(2)}</strong></div>
       <div class="flex" style="justify-content: space-between;"><span>Total</span><strong>S/ ${total.toFixed(2)}</strong></div>
-      <a class="button" href="/cliente/checkout">Proceder al pago</a>
+      <a class="button" href="/cliente/checkout.html">Proceder al pago</a>
       <button class="button secondary" id="clear-cart">Vaciar carrito</button>
     </div>`;
 

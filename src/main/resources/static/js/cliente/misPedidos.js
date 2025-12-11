@@ -3,7 +3,7 @@ import { authGuard } from '../utils/auth.js';
 import { renderNavbar, showLoader } from '../utils/ui.js';
 
 authGuard(['cliente']);
-renderNavbar('/cliente/pedidos');
+renderNavbar('/cliente/pedidos.html');
 
 const listEl = document.getElementById('pedidos-list');
 const filterSelect = document.getElementById('filtro-estado');
@@ -24,7 +24,7 @@ async function loadPedidos() {
           </div>
           <div class="text-right">
             <div>Total: <strong>S/ ${Number(p.total).toFixed(2)}</strong></div>
-            <div><a class="button ghost" href="/cliente/pedido-detalle?id=${p.id}">Ver detalle</a></div>
+            <div><a class="button ghost" href="/cliente/pedido-detalle.html?id=${p.id}">Ver detalle</a></div>
           </div>
         </div>
       </article>`).join('');
