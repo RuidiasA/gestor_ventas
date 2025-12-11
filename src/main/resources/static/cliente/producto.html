@@ -18,7 +18,7 @@
     import { productosApi } from '/js/api/productosApi.js';
     import { addToCart } from '/js/utils/cart.js';
     import { renderNavbar, showToast } from '/js/utils/ui.js';
-    renderNavbar('/cliente/producto');
+    renderNavbar('/cliente/producto.html');
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
     const container = document.getElementById('producto-detalle');

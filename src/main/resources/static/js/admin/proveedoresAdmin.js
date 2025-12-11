@@ -3,7 +3,7 @@ import { authGuard } from '../utils/auth.js';
 import { renderNavbar, showToast, openModal, showLoader } from '../utils/ui.js';
 
 authGuard(['administrador']);
-renderNavbar('/admin/proveedores');
+renderNavbar('/admin/proveedores.html');
 
 const tableBody = document.getElementById('proveedores-table');
 const form = document.getElementById('proveedor-form');

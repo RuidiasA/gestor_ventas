@@ -3,7 +3,7 @@ import { authGuard } from '../utils/auth.js';
 import { renderNavbar, showToast, showLoader } from '../utils/ui.js';
 
 authGuard(['soporte']);
-renderNavbar('/soporte/reclamos');
+renderNavbar('/soporte/reclamos.html');
 
 const listEl = document.getElementById('reclamos-soporte');
 const filtroEstado = document.getElementById('filtro-estado');
@@ -28,7 +28,7 @@ async function load() {
               <option value="REVISADO" ${r.estado === 'REVISADO' ? 'selected' : ''}>Revisado</option>
               <option value="RESUELTO" ${r.estado === 'RESUELTO' ? 'selected' : ''}>Resuelto</option>
             </select>
-            <a class="button secondary" href="/soporte/reclamo-detalle?id=${r.id}">Detalle</a>
+            <a class="button secondary" href="/soporte/reclamo-detalle.html?id=${r.id}">Detalle</a>
           </div>
         </div>
         <p>${r.descripcion}</p>

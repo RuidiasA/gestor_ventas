@@ -7,33 +7,33 @@ export function renderNavbar(activePage = '') {
 
   const roleLinks = {
     cliente: [
-      { href: '/cliente/home', label: 'Inicio' },
-      { href: '/cliente/catalogo', label: 'Catálogo' },
-      { href: '/cliente/carrito', label: 'Carrito' },
-      { href: '/cliente/pedidos', label: 'Mis pedidos' },
-      { href: '/cliente/reclamos', label: 'Reclamos' },
+      { href: '/cliente/home.html', label: 'Inicio' },
+      { href: '/cliente/catalogo.html', label: 'Catálogo' },
+      { href: '/cliente/carrito.html', label: 'Carrito' },
+      { href: '/cliente/pedidos.html', label: 'Mis pedidos' },
+      { href: '/cliente/reclamos.html', label: 'Reclamos' },
     ],
     vendedor: [
-      { href: '/vendedor/pedidos', label: 'Pedidos en tienda' },
+      { href: '/vendedor/pedidos.html', label: 'Pedidos en tienda' },
     ],
     administrador: [
-      { href: '/admin/dashboard', label: 'Dashboard' },
-      { href: '/admin/productos', label: 'Productos' },
-      { href: '/admin/proveedores', label: 'Proveedores' },
-      { href: '/admin/inventario', label: 'Inventario' },
-      { href: '/admin/usuarios', label: 'Usuarios' },
-      { href: '/admin/reportes', label: 'Reportes' },
+      { href: '/admin/dashboard.html', label: 'Dashboard' },
+      { href: '/admin/productos.html', label: 'Productos' },
+      { href: '/admin/proveedores.html', label: 'Proveedores' },
+      { href: '/admin/inventario.html', label: 'Inventario' },
+      { href: '/admin/usuarios.html', label: 'Usuarios' },
+      { href: '/admin/reportes.html', label: 'Reportes' },
     ],
     soporte: [
-      { href: '/soporte/reclamos', label: 'Reclamos' },
-      { href: '/soporte/panel', label: 'Buscar pedido' },
+      { href: '/soporte/reclamos.html', label: 'Reclamos' },
+      { href: '/soporte/panel.html', label: 'Buscar pedido' },
     ],
   };
 
   const links = auth.role ? roleLinks[auth.role] || [] : [
     { href: '/', label: 'Inicio' },
-    { href: '/cliente/catalogo', label: 'Catálogo' },
-    { href: '/login', label: 'Login' },
+    { href: '/cliente/catalogo.html', label: 'Catálogo' },
+    { href: '/login.html', label: 'Login' },
   ];
 
   nav.innerHTML = `
@@ -44,7 +44,7 @@ export function renderNavbar(activePage = '') {
       </a>
       <div class="nav-links" id="nav-links">
         ${links.map(link => `<a href="${link.href}" class="${activePage === link.href ? 'active' : ''}">${link.label}</a>`).join('')}
-        ${auth.token ? `<button class="button ghost" id="logout-btn">Salir</button>` : '<a class="button" href="/login">Login</a>'}
+        ${auth.token ? `<button class="button ghost" id="logout-btn">Salir</button>` : '<a class="button" href="/login.html">Login</a>'}
       </div>
     </div>`;
 
@@ -52,7 +52,7 @@ export function renderNavbar(activePage = '') {
   if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
       clearAuth();
-      window.location.href = '/login';
+      window.location.href = '/login.html';
     });
   }
 }

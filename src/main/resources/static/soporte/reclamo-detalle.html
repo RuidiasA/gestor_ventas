@@ -18,7 +18,7 @@
     import { authGuard } from '/js/utils/auth.js';
     import { renderNavbar, showToast } from '/js/utils/ui.js';
     authGuard(['soporte']);
-    renderNavbar('/soporte/reclamo-detalle');
+    renderNavbar('/soporte/reclamo-detalle.html');
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
     const container = document.getElementById('reclamo-detalle');

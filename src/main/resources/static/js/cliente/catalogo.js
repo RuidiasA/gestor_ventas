@@ -2,7 +2,7 @@ import { productosApi } from '../api/productosApi.js';
 import { addToCart } from '../utils/cart.js';
 import { renderNavbar, showLoader, showToast } from '../utils/ui.js';
 
-renderNavbar('/cliente/catalogo');
+renderNavbar('/cliente/catalogo.html');
 
 const productsGrid = document.getElementById('catalogo-grid');
 
@@ -19,7 +19,7 @@ async function loadProducts() {
           <div class="product-price">S/ ${Number(p.precio).toFixed(2)}</div>
           <div class="text-xs text-muted">Stock: ${p.stock}</div>
           <div class="flex">
-            <a class="button ghost" href="/cliente/producto?id=${p.id}">Ver detalle</a>
+            <a class="button ghost" href="/cliente/producto.html?id=${p.id}">Ver detalle</a>
             <button class="button" data-id="${p.id}">Agregar</button>
           </div>
         </div>

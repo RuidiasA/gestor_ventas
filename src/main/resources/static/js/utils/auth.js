@@ -17,7 +17,7 @@ export function isAuthenticated() {
 export function authGuard(roles = []) {
   const auth = getAuth();
   if (!auth.token) {
-    window.location.href = '/login';
+    window.location.href = '/login.html';
     return;
   }
   if (roles.length && !roles.includes(auth.role)) {
@@ -29,16 +29,16 @@ export function authGuard(roles = []) {
 export function redirectByRole(role) {
   switch (role) {
     case 'cliente':
-      window.location.href = '/cliente/home';
+      window.location.href = '/cliente/home.html';
       break;
     case 'vendedor':
-      window.location.href = '/vendedor/panel';
+      window.location.href = '/vendedor/panel.html';
       break;
     case 'administrador':
-      window.location.href = '/admin/dashboard';
+      window.location.href = '/admin/dashboard.html';
       break;
     case 'soporte':
-      window.location.href = '/soporte/panel';
+      window.location.href = '/soporte/panel.html';
       break;
     default:
       window.location.href = '/';

@@ -12,7 +12,7 @@ form?.addEventListener('submit', async (e) => {
   try {
     await register(payload);
     showToast('Cuenta creada, ingresa con tus credenciales');
-    window.location.href = '/login';
+    window.location.href = '/login.html';
   } catch (err) {
     errorsEl.innerHTML = `<div class="alert">${err.message}</div>`;
   }

@@ -3,7 +3,7 @@ import { authGuard } from '../utils/auth.js';
 import { renderNavbar } from '../utils/ui.js';
 
 authGuard(['cliente']);
-renderNavbar('/cliente/pedido-detalle');
+renderNavbar('/cliente/pedido-detalle.html');
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
@@ -37,7 +37,7 @@ async function loadDetail() {
           <div>Total pagado:</div>
           <strong>S/ ${Number(pedido.total).toFixed(2)}</strong>
         </div>
-        <a class="button ghost" href="/cliente/reclamo-nuevo?pedido=${pedido.id}">Crear reclamo</a>
+        <a class="button ghost" href="/cliente/reclamo-nuevo.html?pedido=${pedido.id}">Crear reclamo</a>
       </div>`;
   } catch (err) {
     detailEl.innerHTML = `<div class="alert">${err.message}</div>`;
