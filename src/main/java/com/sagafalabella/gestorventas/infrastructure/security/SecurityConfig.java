@@ -37,16 +37,45 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable())
+
+        http
+                .csrf(csrf -> csrf.disable())
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/register", "/", "/css/**", "/js/**", "/img/**").permitAll()
+
+                        // RUTAS PÚBLICAS DEL FRONTEND
+                        .requestMatchers(
+                                "/", "/index", "/home",
+                                "/login", "/register"
+                        ).permitAll()
+
+                        // RUTAS MVC DINÁMICAS PÚBLICAS (como /cliente/catalogo)
+                        .requestMatchers(
+                                "/cliente/**",
+                                "/vendedor/**",
+                                "/admin/**",
+                                "/soporte/**"
+                        ).permitAll()
+
+                        // RECURSOS ESTÁTICOS
+                        .requestMatchers(
+                                "/css/**", "/js/**", "/img/**", "/public/**"
+                        ).permitAll()
+
+                        // API DE AUTENTICACIÓN SIN JWT
                         .requestMatchers("/api/v1/auth/**").permitAll()
-                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
-                        .anyRequest().authenticated())
-                // El filtro JWT se ejecuta antes que UsernamePasswordAuthenticationFilter para que cualquier
-                // solicitud (REST o MVC protegida) pueda validar el portador sin disparar redirecciones de login.
+
+                        // SWAGGER
+                        .requestMatchers(
+                                "/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html"
+                        ).permitAll()
+
+                        // TODAS LAS DEMÁS RUTAS REQUIEREN JWT
+                        .anyRequest().authenticated()
+                )
+                // FILTRO JWT
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+
         return http.build();
     }
 

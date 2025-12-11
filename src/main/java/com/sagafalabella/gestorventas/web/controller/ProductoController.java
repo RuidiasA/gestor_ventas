@@ -22,12 +22,16 @@ public class ProductoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductoDTO>> listar(@RequestParam(required = false) String categoria,
-                                                    @RequestParam(required = false) String marca,
-                                                    @RequestParam(required = false) String precioMin,
-                                                    @RequestParam(required = false) String precioMax,
-                                                    @RequestParam(required = false) Boolean disponible) {
-        return ResponseEntity.ok(productoService.findAll(categoria, marca, precioMin, precioMax, disponible));
+    public ResponseEntity<List<ProductoDTO>> listar(
+            @RequestParam(name = "categoria", required = false) String categoria,
+            @RequestParam(name = "marca", required = false) String marca,
+            @RequestParam(name = "precioMin", required = false) String precioMin,
+            @RequestParam(name = "precioMax", required = false) String precioMax,
+            @RequestParam(name = "disponible", required = false) Boolean disponible
+    ) {
+        return ResponseEntity.ok(
+                productoService.findAll(categoria, marca, precioMin, precioMax, disponible)
+        );
     }
 
     @PutMapping("/{id}")
